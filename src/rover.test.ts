@@ -1,4 +1,9 @@
-import { getStartPostion, getStartDirection, setPlateauArea } from "./rover";
+import {
+  getStartPostion,
+  getStartDirection,
+  setPlateauArea,
+  setRoverDirection,
+} from "./rover";
 describe("the Plateau", () => {
   it("is 7 wide and 8 high if 7,8 entered as first input ", () => {
     expect(setPlateauArea(7, 8)).toEqual({ width: 7, height: 8 });
@@ -16,5 +21,11 @@ describe("mars rover start", () => {
   });
   it("should be facing North", () => {
     expect(getStartDirection()).toEqual("N");
+  });
+});
+
+describe("the Mars Rover first input", () => {
+  it("orientation is facing West if W entered", () => {
+    expect(setRoverDirection("W")).toBe("W");
   });
 });
