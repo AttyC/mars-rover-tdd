@@ -12,6 +12,9 @@ describe("multiple moves assuming starting at N", () => {
   it("output should be 2 0 E if RMM entered", () => {
     expect(setRoverTravelPath("RMM")).toBe("2 0 E");
   });
+  it("output should be 0 5 N if MMMMM entered", () => {
+    expect(setRoverTravelPath("MMMMM")).toBe("0 5 N");
+  });
 });
 
 describe("invalid moves", () => {
