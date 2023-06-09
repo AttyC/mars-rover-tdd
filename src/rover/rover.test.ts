@@ -7,6 +7,14 @@ describe("the Mars Rover second input - travel", () => {
   it("output should be 0 0 E if R entered", () => {
     expect(setRoverTravelPath("R")).toBe("0 0 E");
   });
+});
+describe("multiple moves assuming starting at N", () => {
+  it("output should be 2 0 E if RMM entered", () => {
+    expect(setRoverTravelPath("RMM")).toBe("2 0 E");
+  });
+});
+
+describe("invalid moves", () => {
   it("move should be invalid if M L or R not entered", () => {
     expect(setRoverTravelPath("X")).toBe(
       "You must enter a valid travel path consisting of L, R, M e.g. LMMMRM"
