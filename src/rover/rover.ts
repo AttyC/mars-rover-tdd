@@ -17,9 +17,13 @@ export function setRoverTravelPath(travelPath: string): string {
   let yAxis: number = 0;
   let direction: string = "N";
 
-  if (travelPath === "M") {
-    yAxis += 1;
+  if (isMove(travelPath)) {
+    if (travelPath === "M") {
+      yAxis += 1;
+    }
+    return (output = `${xAxis} ${yAxis} ${direction}`);
   }
-  output = `${xAxis} ${yAxis} ${direction}`;
+  output =
+    "You must enter a valid travel path consisteing of L, R, M e.g. LMMMRM";
   return output;
 }
