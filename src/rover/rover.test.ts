@@ -32,7 +32,7 @@ describe("invalid moves", () => {
   });
   it("move is invalid if attempting a move <0", () => {
     expect(setRoverCoordinates(-1, -1)).toBe(
-      "Moves cannot be less than 0 - please try again."
+      "You cannot travel outside the plateau area - make another move."
     );
   });
   it("move is invalid if attempting a move greater than the plateau coordinates", () => {

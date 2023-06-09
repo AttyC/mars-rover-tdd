@@ -1,35 +1,23 @@
 import { getPlateauArea } from "../plateau/plateau";
+import { Move, directionType } from "../utils/types";
 
 export function setRoverDirection(direction: string): string {
   return direction;
 }
+
 export function setRoverCoordinates(
   x: number,
   y: number
 ): Array<number> | string {
   const plateau = getPlateauArea();
 
-  if (x > plateau?.width || y > plateau?.height) {
-    return "You cannot travel outside the plateau area - make another move.";
-  }
-
-  return x < 0 || y < 0
-    ? "Moves cannot be less than 0 - please try again."
+  return x > plateau?.width || y > plateau?.height || x < 0 || y < 0
+    ? "You cannot travel outside the plateau area - make another move."
     : [x, y];
 }
 
-type Move = {
-  xAxis: number;
-  yAxis: number;
-  direction: number;
-};
-
 function isValidPath(input: string) {
   return input === "L" || input === "R" || input === "M";
-}
-
-interface directionType {
-  [key: number]: string;
 }
 
 const directions: directionType = {
