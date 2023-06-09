@@ -1,6 +1,11 @@
-import { setRoverTravelPath } from "./rover";
+import { setRoverCoordinates, setRoverTravelPath } from "./rover";
 
-describe("the Mars Rover second input - travel", () => {
+// describe("the Mars Rover first input: Coordinates", () => {
+//   it("output should be 0 1 N if M entered", () => {
+//     expect(setRoverCoordinates([-1, -1])).toBe("0 1 N");
+//   });
+// });
+describe("the Mars Rover second input: Travel Path", () => {
   it("output should be 0 1 N if M entered", () => {
     expect(setRoverTravelPath("M")).toBe("0 1 N");
   });
@@ -27,6 +32,11 @@ describe("invalid moves", () => {
   it("move should be invalid if M L or R not entered", () => {
     expect(setRoverTravelPath("X")).toBe(
       "You must enter a valid travel path consisting of L, R, M e.g. LMMMRM"
+    );
+  });
+  it("move should be invalid if attempting a move <0", () => {
+    expect(setRoverCoordinates(-1, -1)).toBe(
+      "Moves cannot be less than 0 - please try again."
     );
   });
 });

@@ -1,8 +1,13 @@
 export function setRoverDirection(direction: string): string {
   return direction;
 }
-export function setRoverCoordinates(x: number, y: number): Array<number> {
-  return [x, y];
+export function setRoverCoordinates(
+  x: number,
+  y: number
+): Array<number> | string {
+  return x < 0 || y < 0
+    ? "Moves cannot be less than 0 - please try again."
+    : [x, y];
 }
 
 type Move = {
@@ -11,7 +16,7 @@ type Move = {
   direction: number;
 };
 
-function isMove(input: string) {
+function isValidPath(input: string) {
   return input === "L" || input === "R" || input === "M";
 }
 
@@ -33,10 +38,12 @@ export function setRoverTravelPath(travelPath: string): string {
     yAxis: 0,
     direction: 0,
   };
+  // check if coordinates are valid
 
+  // map through travelPath
   const travelPathSteps = Array.from(travelPath);
 
-  if (travelPathSteps.every(isMove)) {
+  if (travelPathSteps.every(isValidPath)) {
     travelPathSteps.map((step: string) => {
       if (step === "R") {
         move.direction += 1;
