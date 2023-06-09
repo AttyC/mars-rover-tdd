@@ -1,9 +1,10 @@
-function getStartPostion() {
+export function getStartPostion(): Array<number> {
   return [0, 0];
 }
-
-function setPlateauArea(x: number, y: number): {} {
-  return { width: x || 5, height: y || 5 };
+export function getStartDirection(): string {
+  return "N";
 }
 
-export { getStartPostion, setPlateauArea };
+export function setPlateauArea(x: number, y: number): {} {
+  return { width: x || 5, height: y || 5 };
+}
