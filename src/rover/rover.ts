@@ -1,3 +1,5 @@
+import { getPlateauArea } from "../plateau/plateau";
+
 export function setRoverDirection(direction: string): string {
   return direction;
 }
@@ -5,6 +7,12 @@ export function setRoverCoordinates(
   x: number,
   y: number
 ): Array<number> | string {
+  const plateau = getPlateauArea();
+
+  if (x > plateau?.width || y > plateau?.height) {
+    return "You cannot travel outside the plateau area - make another move.";
+  }
+
   return x < 0 || y < 0
     ? "Moves cannot be less than 0 - please try again."
     : [x, y];
@@ -38,9 +46,7 @@ export function setRoverTravelPath(travelPath: string): string {
     yAxis: 0,
     direction: 0,
   };
-  // check if coordinates are valid
 
-  // map through travelPath
   const travelPathSteps = Array.from(travelPath);
 
   if (travelPathSteps.every(isValidPath)) {

@@ -1,10 +1,6 @@
+import { setPlateauArea } from "../plateau/plateau";
 import { setRoverCoordinates, setRoverTravelPath } from "./rover";
 
-// describe("the Mars Rover first input: Coordinates", () => {
-//   it("output should be 0 1 N if M entered", () => {
-//     expect(setRoverCoordinates([-1, -1])).toBe("0 1 N");
-//   });
-// });
 describe("the Mars Rover second input: Travel Path", () => {
   it("output should be 0 1 N if M entered", () => {
     expect(setRoverTravelPath("M")).toBe("0 1 N");
@@ -29,14 +25,20 @@ describe("multiple moves assuming starting at N", () => {
 });
 
 describe("invalid moves", () => {
-  it("move should be invalid if M L or R not entered", () => {
+  it("move is invalid if M L or R not entered", () => {
     expect(setRoverTravelPath("X")).toBe(
       "You must enter a valid travel path consisting of L, R, M e.g. LMMMRM"
     );
   });
-  it("move should be invalid if attempting a move <0", () => {
+  it("move is invalid if attempting a move <0", () => {
     expect(setRoverCoordinates(-1, -1)).toBe(
       "Moves cannot be less than 0 - please try again."
+    );
+  });
+  it("move is invalid if attempting a move greater than the plateau coordinates", () => {
+    setPlateauArea(10, 10);
+    expect(setRoverCoordinates(11, 11)).toBe(
+      "You cannot travel outside the plateau area - make another move."
     );
   });
 });
