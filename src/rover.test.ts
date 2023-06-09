@@ -3,6 +3,7 @@ import {
   getStartDirection,
   setPlateauArea,
   setRoverDirection,
+  setRoverCoordinates,
 } from "./rover";
 describe("the Plateau", () => {
   it("is 7 wide and 8 high if 7,8 entered as first input ", () => {
@@ -27,5 +28,8 @@ describe("mars rover start", () => {
 describe("the Mars Rover first input", () => {
   it("orientation is facing West if W entered", () => {
     expect(setRoverDirection("W")).toBe("W");
+  });
+  it("output coordinates should be 2, 3 if 2,3 entered", () => {
+    expect(setRoverCoordinates(2, 3)).toEqual([2, 3]);
   });
 });
