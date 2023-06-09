@@ -3,7 +3,7 @@ function getStartPostion() {
 }
 
 function setPlateauArea(x: number, y: number): {} {
-  return { width: x, height: y };
+  return { width: x || 5, height: y || 5 };
 }
 
 export { getStartPostion, setPlateauArea };
