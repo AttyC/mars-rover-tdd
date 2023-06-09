@@ -12,5 +12,14 @@ function isMove(input: string) {
 }
 
 export function setRoverTravelPath(travelPath: string): string {
-  return travelPath;
+  let output = "";
+  let xAxis: number = 0;
+  let yAxis: number = 0;
+  let direction: string = "N";
+
+  if (travelPath === "M") {
+    yAxis += 1;
+  }
+  output = `${xAxis} ${yAxis} ${direction}`;
+  return output;
 }
