@@ -1,5 +1,6 @@
+import { setRoverCoordinates } from "./coordinates";
 import { setPlateauArea } from "../plateau/plateau";
-import { setRoverCoordinates, setRoverTravelPath } from "./rover";
+import { setRoverTravelPath } from "./moves";
 
 describe("invalid moves", () => {
   it("move is invalid if M L or R not entered", () => {

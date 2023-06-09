@@ -1,5 +1,12 @@
-import { setPlateauArea } from "../plateau/plateau";
-import { setRoverCoordinates, setRoverTravelPath } from "./rover";
+import { setRoverTravelPath } from "./moves";
+import { getRoverCoordinates, setRoverCoordinates } from "./coordinates";
+
+describe("the Mars Rover first input: Coordinates", () => {
+  it("output should be 3 3 N if M entered", () => {
+    setRoverCoordinates(3, 3);
+    expect(getRoverCoordinates()).toEqual([3, 3]);
+  });
+});
 
 describe("the Mars Rover second input: Travel Path", () => {
   it("output should be 0 1 N if M entered", () => {
