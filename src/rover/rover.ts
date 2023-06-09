@@ -21,9 +21,12 @@ export function setRoverTravelPath(travelPath: string): string {
     if (travelPath === "M") {
       yAxis += 1;
     }
+    if (travelPath === "R") {
+      direction = "E";
+    }
     return (output = `${xAxis} ${yAxis} ${direction}`);
   }
   output =
-    "You must enter a valid travel path consisteing of L, R, M e.g. LMMMRM";
+    "You must enter a valid travel path consisting of L, R, M e.g. LMMMRM";
   return output;
 }
