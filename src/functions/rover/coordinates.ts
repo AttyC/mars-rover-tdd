@@ -1,5 +1,5 @@
 import { getPlateauArea } from "../plateau/plateau";
-import { Rover, Coordinates, Move, directionType } from "../utils/types";
+import { Rover, Coordinates, Move, directionType } from "../../utils/types";
 import rover from "./index";
 
 export function setRoverCoordinates(

@@ -1,4 +1,4 @@
-import { Move, directionType } from "../utils/types";
+import { Move, directionType } from "../../utils/types";
 
 function isValidPath(input: string) {
   return input === "L" || input === "R" || input === "M";

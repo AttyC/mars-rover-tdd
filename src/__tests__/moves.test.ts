@@ -1,4 +1,4 @@
-import { setRoverTravelPath } from "../rover/moves";
+import { setRoverTravelPath } from "../functions/rover/moves";
 
 describe("the Mars Rover second input: Travel Path", () => {
   it("output should be 0 1 N if M entered", () => {

@@ -1,5 +1,5 @@
-import { getRoverCoordinates } from "../rover/coordinates";
-import { getRoverDirection } from "../rover/direction";
+import { getRoverCoordinates } from "../functions/rover/coordinates";
+import { getRoverDirection } from "../functions/rover/direction";
 
 describe("Mars Rover start postion", () => {
   it("should be at coordinates 0,0", () => {

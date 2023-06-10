@@ -1,4 +1,4 @@
-import { Rover } from "../utils/types";
+import { Rover } from "../../utils/types";
 
 const rover: Rover = {
   coordinates: [0, 0],
