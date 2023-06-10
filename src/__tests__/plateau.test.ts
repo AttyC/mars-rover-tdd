@@ -1,4 +1,4 @@
-import { setPlateauArea } from "./plateau";
+import { setPlateauArea } from "../plateau/plateau";
 describe("the Plateau", () => {
   it("is 7 wide and 8 high if 7,8 entered as first input ", () => {
     expect(setPlateauArea(7, 8)).toEqual({ width: 7, height: 8 });

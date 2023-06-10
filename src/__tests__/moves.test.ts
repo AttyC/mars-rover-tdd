@@ -1,12 +1,4 @@
-import { setRoverTravelPath } from "./moves";
-import { getRoverCoordinates, setRoverCoordinates } from "./coordinates";
-
-describe("the Mars Rover first input: Coordinates", () => {
-  it("output should be 3 3 N if M entered", () => {
-    setRoverCoordinates(3, 3);
-    expect(getRoverCoordinates()).toEqual([3, 3]);
-  });
-});
+import { setRoverTravelPath } from "../rover/moves";
 
 describe("the Mars Rover second input: Travel Path", () => {
   it("output should be 0 1 N if M entered", () => {
