@@ -2,7 +2,7 @@ import { print, askQuestion } from "../ui/console";
 import { welcomeToMars } from "../index";
 import { getMarsName } from "../functions/player/player";
 import { getPlateauArea, setPlateauArea } from "../functions/plateau/plateau";
-import { meetRover } from "./getRoving";
+import { meetRover } from "./play";
 
 export function startAdventure(name: string): void {
   if (name && name.length > 0) {
