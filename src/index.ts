@@ -22,7 +22,7 @@ function startAdventure(name: string): void {
       `Just a few questions before you start sniffing around Mars with your Rover.`
     );
     print(
-      `What size is your planned search area? Enter 2 digits, like 78 for 7 wide, 8 long`
+      `What size is your planned search area? Enter only 2 digits, like 78 for 7 wide, 8 long`
     );
     askQuestion(`What size is your planned search area?`, getArea);
   } else {
@@ -32,21 +32,22 @@ function startAdventure(name: string): void {
 }
 
 function isNumber(input: string) {
-  return !Number.isNaN(input);
+  let isNum = Number(input);
+  return !isNaN(isNum);
 }
 
 function getArea(input: string) {
   const areaCoords = Array.from(input);
-  if (areaCoords.every(isNumber)) {
+  if (areaCoords.every(isNumber) && areaCoords.length === 2) {
     setPlateauArea(Number(areaCoords[0]), Number(areaCoords[1]));
-    const area = getPlateauArea();
-    console.log("Your plateau area is:", area);
   } else {
     print(
-      `You must enter numbers, otherwise your search area will have no...area!`
+      `We've given you the default plateau size, since your earth characters did not make sense.`
     );
-    return endAdventure();
+    setPlateauArea(0, 0);
   }
+  const area = getPlateauArea();
+  console.log(`Your plateau area is: `, area);
 }
 
 export function endAdventure(): void {
