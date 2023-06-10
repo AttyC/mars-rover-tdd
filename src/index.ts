@@ -1,19 +1,24 @@
-import { getRoverCoordinates } from "./rover/coordinates";
 import { clear, print, askQuestion } from "./ui/console";
+import { getMarsName } from "./player/player";
 
 export function traverseMars(): void {
   clear(false);
   print("--------------------------");
   print("| Welcome to MARS! |");
   print("--------------------------");
-  askQuestion(`Enter your name`, startAdventure);
+  print(
+    `Nice to meet you. On Mars, we don't use our Earth Names, we use Mars names.`
+  );
+  askQuestion(`What's your Earth name? `, startAdventure);
 }
 
 function startAdventure(name: string): void {
   if (name && name.length > 0) {
-    print("Let's get started");
+    print("...getting your Mars name...");
+    const marsName = getMarsName(name);
+    print(`Welcome, 👾 ${marsName}! 👾`);
   } else {
-    print(`Please enter your Mars name`);
+    print(`You may not proceed without your Mars name.`);
     return endAdventure();
   }
 }
