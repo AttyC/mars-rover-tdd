@@ -31,11 +31,22 @@ function startAdventure(name: string): void {
   }
 }
 
-function getArea(x: string) {
-  const areaCoords = Array.from(x);
-  setPlateauArea(Number(areaCoords[0]), Number(areaCoords[1]));
-  const area = getPlateauArea();
-  console.log("Your plateau area is:", area);
+function isNumber(input: string) {
+  return !Number.isNaN(input);
+}
+
+function getArea(input: string) {
+  const areaCoords = Array.from(input);
+  if (areaCoords.every(isNumber)) {
+    setPlateauArea(Number(areaCoords[0]), Number(areaCoords[1]));
+    const area = getPlateauArea();
+    console.log("Your plateau area is:", area);
+  } else {
+    print(
+      `You must enter numbers, otherwise your search area will have no...area!`
+    );
+    return endAdventure();
+  }
 }
 
 export function endAdventure(): void {
