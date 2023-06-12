@@ -1,15 +1,12 @@
 import { print, askQuestion } from "../ui/console";
 import { getPlateauArea } from "../functions/plateau/plateau";
 import { directions } from "../functions/rover/moves";
-import { isEmpty } from "../utils/helper";
+import { getRoverPosition, isEmpty } from "../utils/helper";
 import {
   getRoverCoordinates,
   setRoverCoordinates,
 } from "../functions/rover/coordinates";
-import {
-  getRoverDirection,
-  setRoverDirection,
-} from "../functions/rover/direction";
+import { setRoverDirection } from "../functions/rover/direction";
 import { setRoverTravelPath } from "../functions/rover/moves";
 
 export const locateRover = () => {
@@ -58,6 +55,9 @@ export const traverseMars = (): void => {
     `Example: if you enter 12W, your rover will start at square 1 East, square 2 North, facing West`
   );
 
+  print(
+    `Your plateau area is: ${plateau.width} squares wide and ${plateau.height} squares long - set a start point within your Plateau.`
+  );
   askQuestion(
     `For your first move, tell your Rover 🚎 where to start.`,
     instructRoverStart
@@ -69,19 +69,29 @@ export const instructRoverStart = (input: string) => {
     print("Rovers 🚎🚎 need instructions, try again!");
     traverseMars();
   }
+  const area = getPlateauArea();
+
   const roverLocation = Array.from(input);
+
+  if (
+    Number(roverLocation[0]) > area.width ||
+    Number(roverLocation[1]) > area.height
+  ) {
+    print(
+      `Your plateau area is: ${area.width} squares wide and ${area.height} squares long - set a start point within your Plateau.`
+    );
+    traverseMars();
+  }
+
   setRoverCoordinates(Number(roverLocation[0]), Number(roverLocation[1]));
   setRoverDirection(roverLocation[2]);
-  const coords = getRoverCoordinates();
-  const direction = getRoverDirection();
-  print(
-    `..... your Rover has a starting position of ${coords[0]} ${coords[1]} ${direction}. Good work!`
-  );
+
+  getRoverPosition();
+
   print(`🎉🎉🎉`);
 
   print(`Ok, your Rover 🚎 is READY to GO! Now, give your Rover 🚎 a path to follow.
     
-
     You will enter a series of letters. How many? That's up to you!
 
         R = rotate right 90º.
@@ -94,4 +104,5 @@ export const instructRoverStart = (input: string) => {
         `);
 
   askQuestion(`Enter a path for your Rover 🚎 to follow`, setRoverTravelPath);
+  getRoverPosition();
 };
