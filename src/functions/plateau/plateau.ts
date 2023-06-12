@@ -1,7 +1,5 @@
-type Plateau = {
-  width: number;
-  height: number;
-};
+import { Plateau } from "../../utils/types";
+
 let plateau: Plateau;
 
 export const setPlateauArea = (x: number, y: number): Plateau => {

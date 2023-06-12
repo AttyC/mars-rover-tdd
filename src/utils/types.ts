@@ -11,6 +11,11 @@ export type Move = {
   direction: number;
 };
 
+export type Plateau = {
+  width: number;
+  height: number;
+};
+
 export interface directionType {
   [key: number]: string;
 }
