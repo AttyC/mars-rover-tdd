@@ -4,7 +4,7 @@ import { getMarsName } from "../functions/player/player";
 import { getPlateauArea, setPlateauArea } from "../functions/plateau/plateau";
 import { meetRover } from "./play";
 
-export function startAdventure(name: string): void {
+export const startAdventure = (name: string): void => {
   if (name && name.length > 0) {
     print(`
     
@@ -25,14 +25,11 @@ export function startAdventure(name: string): void {
     print(`You may not proceed without your Mars name.`);
     return endAdventure();
   }
-}
+};
 
-function isNumber(input: string) {
-  let isNum = Number(input);
-  return !isNaN(isNum);
-}
+const isNumber = (input: string) => !isNaN(Number(input));
 
-function getArea(input: string) {
+const getArea = (input: string) => {
   const areaCoords = Array.from(input);
   if (areaCoords.every(isNumber) && areaCoords.length === 2) {
     setPlateauArea(Number(areaCoords[0]), Number(areaCoords[1]));
@@ -47,10 +44,10 @@ function getArea(input: string) {
     `Your plateau area is: ${area.width} squares wide and ${area.height} squares long.`
   );
   askQuestion(`Are you ready to meet your rover?`, meetRover);
-}
+};
 
-export function endAdventure(): void {
+export const endAdventure = (): void => {
   print("***************************************");
   print("You are not ready to traverse Mars! 😭");
   askQuestion("Press ENTER to restart! ", welcomeToMars);
-}
+};
