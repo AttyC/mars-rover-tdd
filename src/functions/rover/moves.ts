@@ -3,7 +3,7 @@ import { Move, directionType } from "../../utils/types";
 function isValidPath(input: string) {
   return input === "L" || input === "R" || input === "M";
 }
-const directions: directionType = {
+export const directions: directionType = {
   0: "N",
   1: "E",
   2: "S",
