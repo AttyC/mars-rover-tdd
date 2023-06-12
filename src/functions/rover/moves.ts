@@ -1,4 +1,8 @@
+import { print, askQuestion } from "../../ui/console";
+import { getRoverPosition, isEmpty } from "../../utils/helper";
 import { Move, directionType } from "../../utils/types";
+import { setRoverCoordinates } from "./coordinates";
+import { setRoverDirection } from "./direction";
 
 const isValidPath = (input: string) =>
   input.toUpperCase() === "L" ||
@@ -12,20 +16,40 @@ export const directions: directionType = {
   3: "W",
 };
 
+export const getPath = (): void => {
+  askQuestion(`Enter a path for your Rover 🚎 to follow`, setRoverTravelPath);
+};
 export const setRoverTravelPath = (travelPath: string): string => {
+  if (isEmpty(travelPath)) {
+    print(`Please enter a travel path`);
+  }
   let output = "";
+  const currentPosition = getRoverPosition();
+
+  let arrCurr = Array.from(currentPosition);
+  let newDirection: number = 0;
+  if (arrCurr[5] === "E") {
+    newDirection = 1;
+  } else if (arrCurr[5] === "S") {
+    newDirection = 2;
+  } else if (arrCurr[5] === "W") {
+    newDirection = 3;
+  } else {
+    newDirection = 0;
+  }
+
   const move: Move = {
-    xAxis: 0,
-    yAxis: 0,
-    direction: 0,
+    xAxis: Number(arrCurr[0]),
+    yAxis: Number(arrCurr[2]),
+    direction: newDirection,
   };
 
   const travelPathSteps = Array.from(travelPath);
 
   if (travelPathSteps.every(isValidPath)) {
-    travelPathSteps.map((step: string) => {
+    travelPathSteps.map((s: string) => {
       // increment or decrement the direction depending on R/L input
-
+      let step = s.toUpperCase();
       step === "R" && move.direction++;
       step === "L" && move.direction--;
 
@@ -34,11 +58,19 @@ export const setRoverTravelPath = (travelPath: string): string => {
       step === "M" && move.direction === 1 && move.xAxis++;
       step === "M" && move.direction === 2 && move.yAxis--;
       step === "M" && move.direction === 3 && move.xAxis--;
-    });
 
-    return (output = `${move.xAxis} ${move.yAxis} ${
-      directions[move.direction]
-    }`);
+      if (move.yAxis < 0) {
+        move.yAxis = 0;
+      }
+      if (move.xAxis < 0) {
+        move.xAxis = 0;
+      }
+    });
+    setRoverCoordinates(move.xAxis, move.yAxis);
+    setRoverDirection(directions[move.direction]);
+    output = getRoverPosition();
+
+    return output;
   }
   output =
     "You must enter a valid travel path consisting of L, R, M e.g. LMMMRM";

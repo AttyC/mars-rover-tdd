@@ -6,11 +6,8 @@ import {
   getRoverCoordinates,
   setRoverCoordinates,
 } from "../functions/rover/coordinates";
-import {
-  getRoverDirection,
-  setRoverDirection,
-} from "../functions/rover/direction";
-import { setRoverTravelPath } from "../functions/rover/moves";
+import { setRoverDirection } from "../functions/rover/direction";
+import { getPath } from "../functions/rover/moves";
 
 export const locateRover = () => {
   const coordinates = getRoverCoordinates();
@@ -23,7 +20,6 @@ export const meetRover = (input: string) => {
       meetRover
     );
   }
-
   print(`Let's find your Rover! Where is it?`);
   locateRover();
   print(`🎉🎉🎉`);
@@ -103,6 +99,6 @@ export const instructRoverStart = (input: string) => {
             LMM = rotate left 90º and move forward two spaces.
             MMRMM = Move two spaces, rotate right 90º and move two spaces.
             `);
-    askQuestion(`Enter a path for your Rover 🚎 to follow`, setRoverTravelPath);
+    getPath();
   }
 };
