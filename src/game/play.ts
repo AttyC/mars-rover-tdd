@@ -100,5 +100,10 @@ export const instructRoverStart = (input: string) => {
             MMRMM = Move two spaces, rotate right 90º and move two spaces.
             `);
     getPath();
+    askQuestion("would you like to continue?", continueGame);
   }
+};
+
+export const continueGame = () => {
+  print("let's continue!");
 };
