@@ -1,16 +1,16 @@
 import { Move, directionType } from "../../utils/types";
 
-function isValidPath(input: string) {
-  return input === "L" || input === "R" || input === "M";
-}
-export const directions: directionType = {
+const isValidPath = (input: string) =>
+  input === "L" || input === "R" || input === "M";
+
+const directions: directionType = {
   0: "N",
   1: "E",
   2: "S",
   3: "W",
 };
 
-export function setRoverTravelPath(travelPath: string): string {
+export const setRoverTravelPath = (travelPath: string): string => {
   let output = "";
   const move: Move = {
     xAxis: 0,
@@ -41,4 +41,4 @@ export function setRoverTravelPath(travelPath: string): string {
   output =
     "You must enter a valid travel path consisting of L, R, M e.g. LMMMRM";
   return output;
-}
+};
