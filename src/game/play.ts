@@ -1,6 +1,7 @@
 import { print, askQuestion } from "../ui/console";
 import { getPlateauArea } from "../functions/plateau/plateau";
 import { directions } from "../functions/rover/moves";
+import { isNotEmpty } from "../utils/helper";
 
 import {
   getRoverCoordinates,
@@ -8,11 +9,14 @@ import {
 } from "../functions/rover/coordinates";
 import { setRoverDirection } from "../functions/rover/direction";
 
-export function meetRover() {
-  print(`Let's go get your Rover! Where is it?`);
-  const coordinates = getRoverCoordinates();
-  print(`Here's your Rover... at Plateau position ${coordinates}`);
-  askQuestion("Are you ready to traverse Mars?", traverseMars);
+export function meetRover(input: string) {
+  if (isNotEmpty(input)) {
+    print(`Let's go get your Rover! Where is it?`);
+    const coordinates = getRoverCoordinates();
+    print(`Here's your Rover... at Plateau position ${coordinates}`);
+    askQuestion("Are you ready to traverse Mars?", traverseMars);
+  }
+  askQuestion("So...are you ready to meet your Rover? Enter y or n", meetRover);
 }
 
 export function traverseMars(): void {
@@ -39,8 +43,9 @@ export function traverseMars(): void {
   );
 }
 export function instructRoverStart(input: string) {
-  if (!input) askQuestion("Rovers need instructions, try again!", traverseMars);
-
+  if (isNotEmpty(input)) {
+    askQuestion("Rovers need instructions, try again!", traverseMars);
+  }
   const roverLocation = Array.from(input);
   setRoverCoordinates(Number(roverLocation[0]), Number(roverLocation[1]));
   setRoverDirection(roverLocation[2]);
