@@ -7,11 +7,15 @@ import { meetRover } from "./play";
 export const startAdventure = (name: string): void => {
   if (name && name.length > 0) {
     print(`
-    
-    ...getting your Mars name...`);
+...getting your Mars name...`);
     const marsName = getMarsName(name);
     print(`Welcome, 👾 ${marsName}! 👾 👋👋👋
     `);
+    print(
+      `**********
+      
+      `
+    );
     print(
       `Just a few questions before you start sniffing around Mars with your Rover. 🚎
 -------------------------------------------------------------------------------`
@@ -42,6 +46,11 @@ const getArea = (input: string) => {
   const area = getPlateauArea();
   print(
     `Your plateau area is: ${area.width} squares wide and ${area.height} squares long.`
+  );
+  print(
+    `**********
+      
+      `
   );
   askQuestion(`Are you ready to meet your rover?`, meetRover);
 };

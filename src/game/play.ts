@@ -10,19 +10,28 @@ import {
   getRoverDirection,
   setRoverDirection,
 } from "../functions/rover/direction";
+import { setRoverTravelPath } from "../functions/rover/moves";
 
+export const locateRover = () => {
+  const coordinates = getRoverCoordinates();
+  print(`Your Rover 🚎 is at Plateau position ${coordinates} 🚎`);
+};
 export const meetRover = (input: string) => {
   if (isEmpty(input)) {
     askQuestion(
-      "So...are you ready to meet your Rover? Enter y or n",
+      "So...are you ready to meet your Rover 🚎 ? Enter y or n",
       meetRover
     );
   }
 
   print(`Let's find your Rover! Where is it?`);
-  const coordinates = getRoverCoordinates();
-  print(`Here's your Rover... at Plateau position ${coordinates} 🚎`);
+  locateRover();
   print(`🎉🎉🎉`);
+  print(
+    `**********
+      
+      `
+  );
   askQuestion(
     `Ready to go and and traverse Mars? Enter to continue..."`,
     traverseMars
@@ -31,20 +40,18 @@ export const meetRover = (input: string) => {
 
 export const traverseMars = (): void => {
   print(
-    `For your first move,you'll need to give your Rover 🚎 some 
+    `**********
 
-    - starting coordinates and 
-    - a direction.`
+    FIRST MOVE: you'll need to give your Rover 🚎 STARTING COORDINATES and a DIRECTION.`
   );
+
   const plateau = getPlateauArea();
   const directionNames = Object.values(directions);
   print(
-    `Like this: 
-   
-    - how many squares east/west (from 0-${plateau.width})
-    
-    - how many squares north/south (from 0-${plateau.height}) 
-    
+    `In a string of three characters, like this XXX: 
+
+    - the number of squares east/west (from 0-${plateau.width})
+    - the number of squares north/south (from 0-${plateau.height}) 
     - the direction of travel (one of ${directionNames})`
   );
   print(
@@ -52,13 +59,15 @@ export const traverseMars = (): void => {
   );
 
   askQuestion(
-    `For your first move, tell your rover where to start.`,
-    instructRover
+    `For your first move, tell your Rover 🚎 where to start.`,
+    instructRoverStart
   );
 };
-export const instructRover = (input: string) => {
+
+export const instructRoverStart = (input: string) => {
   if (isEmpty(input)) {
-    askQuestion("Rovers need instructions, try again!", traverseMars);
+    print("Rovers 🚎🚎 need instructions, try again!");
+    traverseMars();
   }
   const roverLocation = Array.from(input);
   setRoverCoordinates(Number(roverLocation[0]), Number(roverLocation[1]));
@@ -66,6 +75,23 @@ export const instructRover = (input: string) => {
   const coords = getRoverCoordinates();
   const direction = getRoverDirection();
   print(
-    `..... your Rover is travelling to ${coords[0]} ${coords[1]} ${direction}`
+    `..... your Rover has a starting position of ${coords[0]} ${coords[1]} ${direction}. Good work!`
   );
+  print(`🎉🎉🎉`);
+
+  print(`Ok, your Rover 🚎 is READY to GO! Now, give your Rover 🚎 a path to follow.
+    
+
+    You will enter a series of letters. How many? That's up to you!
+
+        R = rotate right 90º.
+        L = rotate left 90º.
+        M = Move one space forward in whatever direction you're facing.
+
+        Examples:
+        LMM = rotate left 90º and move forward two spaces.
+        MMRMM = Move two spaces, rotate right 90º and move two spaces.
+        `);
+
+  askQuestion(`Enter a path for your Rover 🚎 to follow`, setRoverTravelPath);
 };
