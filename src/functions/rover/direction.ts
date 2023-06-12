@@ -1,8 +1,6 @@
 import rover from "./index";
 
-export function setRoverDirection(direction: string): string {
-  return (rover.direction = direction);
-}
-export function getRoverDirection(): string {
-  return rover.direction;
-}
+export const setRoverDirection = (direction: string): string =>
+  (rover.direction = direction);
+
+export const getRoverDirection = (): string => rover.direction;
