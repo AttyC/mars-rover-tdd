@@ -66,6 +66,7 @@ export const setRoverTravelPath = (travelPath: string): string => {
         move.xAxis = 0;
       }
     });
+    print(`Your Rover 🚎 is traversing Mars to the new location...!`);
     setPosition(move.xAxis, move.yAxis, directions[move.direction]);
     output = `${move.xAxis} ${move.yAxis} ${directions[move.direction]}`;
     return output;
