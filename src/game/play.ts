@@ -2,7 +2,6 @@ import { print, askQuestion } from "../ui/console";
 import { getPlateauArea } from "../functions/plateau/plateau";
 import { directions } from "../functions/rover/moves";
 import { isEmpty } from "../utils/helper";
-
 import {
   getRoverCoordinates,
   setRoverCoordinates,
@@ -12,7 +11,7 @@ import {
   setRoverDirection,
 } from "../functions/rover/direction";
 
-export function meetRover(input: string) {
+export const meetRover = (input: string) => {
   if (isEmpty(input)) {
     askQuestion(
       "So...are you ready to meet your Rover? Enter y or n",
@@ -28,9 +27,9 @@ export function meetRover(input: string) {
     `Ready to go and and traverse Mars? Enter to continue..."`,
     traverseMars
   );
-}
+};
 
-export function traverseMars(): void {
+export const traverseMars = (): void => {
   print(
     `For your first move,you'll need to give your Rover 🚎 some 
 
@@ -54,10 +53,10 @@ export function traverseMars(): void {
 
   askQuestion(
     `For your first move, tell your rover where to start.`,
-    instructRoverStart
+    instructRover
   );
-}
-export function instructRoverStart(input: string) {
+};
+export const instructRover = (input: string) => {
   if (isEmpty(input)) {
     askQuestion("Rovers need instructions, try again!", traverseMars);
   }
@@ -69,4 +68,4 @@ export function instructRoverStart(input: string) {
   print(
     `..... your Rover is travelling to ${coords[0]} ${coords[1]} ${direction}`
   );
-}
+};
