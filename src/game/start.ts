@@ -6,15 +6,20 @@ import { meetRover } from "./play";
 
 export function startAdventure(name: string): void {
   if (name && name.length > 0) {
-    print("...getting your Mars name...");
+    print(`
+    
+    ...getting your Mars name...`);
     const marsName = getMarsName(name);
-    print(`Welcome, 👾 ${marsName}! 👾`);
+    print(`Welcome, 👾 ${marsName}! 👾 👋👋👋
+    `);
     print(
-      `Just a few questions before you start sniffing around Mars with your Rover.`
+      `Just a few questions before you start sniffing around Mars with your Rover. 🚎
+-------------------------------------------------------------------------------`
     );
     print(
       `What size is your planned search area? Enter only 2 digits, like 78 for 7 wide, 8 long`
     );
+
     askQuestion(`What size is your planned search area?`, getArea);
   } else {
     print(`You may not proceed without your Mars name.`);
@@ -38,7 +43,9 @@ function getArea(input: string) {
     setPlateauArea(0, 0);
   }
   const area = getPlateauArea();
-  console.log(`Your plateau area is: `, area);
+  print(
+    `Your plateau area is: ${area.width} squares wide and ${area.height} squares long.`
+  );
   askQuestion(`Are you ready to meet your rover?`, meetRover);
 }
 

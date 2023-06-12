@@ -7,7 +7,7 @@ export function welcomeToMars(): void {
   print("| Welcome to MARS! |");
   print("--------------------------");
   print(
-    `Nice to meet you. On Mars, we don't use our Earth Names, we use Mars names.`
+    `Nice to meet you. On Mars 🔴, we don't use our Earth 🌍 names, we use Mars 🔴 names.`
   );
   askQuestion(`What's your Earth name? `, startAdventure);
 }
