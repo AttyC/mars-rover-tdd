@@ -30,3 +30,25 @@ cardinal compass points) respectively, with bottom-left, facing North being 0 0 
 Move the Rover around using the input commands and ouutput the final position.
 
 #### Full instructions are [here](/files/Mars_Rover_Brief_1.1.0.pdf).
+
+---
+
+##
+
+The app is written in TypeScript using Test Driven development.
+
+### To run the app
+
+`git clone https://github.com/AttyC/mars-rover-tdd.git`
+
+`cd mars-rover-tdd`
+
+`npm install`
+
+The app runs in the terminal, so open a terminal from VSCode in the project folder.
+
+`npm start`
+
+### To run the tests using Jest
+
+`npm test`
