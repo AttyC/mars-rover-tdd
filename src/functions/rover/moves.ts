@@ -1,7 +1,9 @@
 import { Move, directionType } from "../../utils/types";
 
 const isValidPath = (input: string) =>
-  input === "L" || input === "R" || input === "M";
+  input.toUpperCase() === "L" ||
+  input.toUpperCase() === "R" ||
+  input.toUpperCase() === "M";
 
 export const directions: directionType = {
   0: "N",
