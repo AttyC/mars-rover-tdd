@@ -1,4 +1,10 @@
 import { setRoverTravelPath } from "../functions/rover/moves";
+import { setRoverCoordinates } from "../functions/rover/coordinates";
+import { setRoverDirection } from "../functions/rover/direction";
+beforeEach(() => {
+  setRoverCoordinates(0, 0);
+  setRoverDirection("N");
+});
 
 describe("the Mars Rover second input: Travel Path", () => {
   it("output should be 0 1 N if M entered", () => {
