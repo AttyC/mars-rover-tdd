@@ -1,1 +1,1 @@
-export const isNotEmpty = (input: string | number) => !!input;
+export const isEmpty = (input: string | number) => !input;
