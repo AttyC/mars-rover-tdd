@@ -1,4 +1,2 @@
-export function getMarsName(name: string): string {
-  const marsName = Array.from(name).reverse().join("");
-  return marsName;
-}
+export const getMarsName = (name: string): string =>
+  Array.from(name).reverse().join("");
