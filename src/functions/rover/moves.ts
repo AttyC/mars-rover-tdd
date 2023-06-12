@@ -66,13 +66,17 @@ export const setRoverTravelPath = (travelPath: string): string => {
         move.xAxis = 0;
       }
     });
-    setRoverCoordinates(move.xAxis, move.yAxis);
-    setRoverDirection(directions[move.direction]);
-    output = getRoverPosition();
-
+    setPosition(move.xAxis, move.yAxis, directions[move.direction]);
+    output = `${move.xAxis} ${move.yAxis} ${directions[move.direction]}`;
     return output;
   }
   output =
     "You must enter a valid travel path consisting of L, R, M e.g. LMMMRM";
   return output;
+};
+
+export const setPosition = async (x: number, y: number, z: string) => {
+  let result = await setRoverCoordinates(x, y);
+  let result2 = await setRoverDirection(z);
+  return result && result2 && getRoverPosition();
 };
