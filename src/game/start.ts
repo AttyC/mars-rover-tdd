@@ -3,11 +3,12 @@ import { welcomeToMars } from "../index";
 import { getMarsName } from "../functions/player/player";
 import { getPlateauArea, setPlateauArea } from "../functions/plateau/plateau";
 import { meetRover } from "../functions/rover/rover";
+import { messages, displayText } from "../ui/messages";
 
 export const startAdventure = (name: string): void => {
   if (name && name.length > 0) {
-    print(`
-...getting your Mars name...`);
+    displayText(messages.getMarsName);
+
     const marsName = getMarsName(name);
     print(`Welcome, 👾 ${marsName}! 👾 👋👋👋
     `);
