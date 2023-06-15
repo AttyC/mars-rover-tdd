@@ -53,6 +53,10 @@ export const setRoverTravelPath = (travelPath: string): string => {
         let step = s.toUpperCase();
         step === "R" && move.direction++;
         step === "L" && move.direction--;
+        if (move.direction < 0) {
+          print("You cannot move past the edge of the Plateau");
+          move.direction = 0;
+        }
 
         // 0: "N", 1: "E",2: "S", 3: "W",
         step === "M" && move.direction === 0 && move.yAxis++;
@@ -66,6 +70,7 @@ export const setRoverTravelPath = (travelPath: string): string => {
         if (move.xAxis < 0) {
           move.xAxis = 0;
         }
+        console.log("MOVE XAXIS", move.xAxis);
       });
       print(`Your Rover 🚎 is traversing Mars to the new location...!`);
       setPosition(move.xAxis, move.yAxis, directions[move.direction]);
